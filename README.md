@@ -2,6 +2,24 @@
 
 Aquest repositori conté la configuració i evidències de la pràctica de desplegament d'AdGuard Home mitjançant Docker Compose.
 
+## Instruccions de Desplegament
+
+Per posar en marxa l'entorn, segueix aquests passos:
+
+1.  **Prerequisits**: Assegura't de tenir instal·lat Docker i Docker Compose.
+2.  **Aixecar el servei**: Executa la següent comanda al directori arrel del projecte:
+    ```bash
+    docker compose up -d
+    ```
+3.  **Configuració inicial**: Si és la primera vegada que s'executa, accedeix a `http://localhost:3000` per completar l'assistent de configuració.
+4.  **Accés al Dashboard**: Un cop configurat, el panel de control estarà disponible a `http://localhost:80`.
+
+## Funcionament de l'Entorn
+
+*   **Servidor DNS**: El contenidor escolta peticions DNS al port 53 (TCP/UDP). Per utilitzar-lo, has de configurar la teva màquina o router per utilitzar la IP del host com a servidor DNS primari.
+*   **Persistència**: Totes les dades s'emmagatzemen a les carpetes `workdir` i `confdir`. Això permet que, encara que s'esborri el contenidor, la configuració i les estadístiques es mantinguin en tornar-lo a aixecar.
+*   **Administració**: Des del panel de control web, pots afegir noves llistes de bloqueig, veure el registre de consultes en temps real i configurar regles personalitzades.
+
 ## 1. Desplegament d'AdGuard Home
 
 S'ha utilitzat un fitxer `docker-compose.yml` per desplegar el servei amb volums persistents per a la configuració i les dades.
